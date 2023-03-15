@@ -1,42 +1,29 @@
 // tady je místo pro náš program
 
-// 1 Výplata
-const salary = (wage, hours, days) => {
-    return Math.round(wage * hours * days)
+// 1 Catering
+
+const justFood = (kolikLidi) => {
+	return `catering od Just Food pro ${kolikLidi} lidí za ${Math.round(
+		kolikLidi * 100
+	)} Kč`
+}
+const yourMama = (koliktLidi) => {
+	return `catering od Your Mama pro ${kolikLidi} lidí za ${Math.round(
+		pocetLidi * 500
+	)} Kč`
+}
+const flavourHaven = (kolikLidi) => {
+	return `catering od Flavour Haven pro ${kolikLidi} lidí za ${Math.round(
+		kolikLidi * 1000
+	)} Kč`
 }
 
-const taxed = (salary, taxPercentage) => {
-    return Math.round(salary * ((100 - taxPercentage)) / 100)
+const createEvent = (nazevUdalosti, pocetLidi, catering) => {
+	return `Událost ${nazevUdalosti} s ${catering(pocetLidi)}`
 }
 
-const wage = 500
-const hours = 6
-const days = 20
-const beforeTaxation = salary(wage, hours, days)
-const afterTaxation = taxed(beforeTaxation, 15)
-
-document.body.innerHTML = `
-<p>Wage: ${wage} Kč </p>
-<p>Hours: ${hours}</p>
-<p>Days: ${days}</p>
-<p>Before taxation: ${beforeTaxation} Kč</p>
-<p>After taxation: ${afterTaxation} Kč</p>
-`
-
-// 2 Kalkulačka
-const calculate = (number1, operation, number2) => {
-    if (operation === "+") {
-        return number1 + number2
-    }
-    if (operation === "-") {
-        return number1 - number2 
-    }
-    if (operation === "*") {
-        return number1 * number2
-    }
-    if (operation === "/") {
-            return number1 / number2
-    } else {
-        return false;
-    }
-}
+document.body.innerHTML += createEvent(
+	'Inaugurace prezidenta',
+	100,
+	flavourHaven
+)
